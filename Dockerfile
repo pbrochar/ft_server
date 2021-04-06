@@ -36,5 +36,6 @@ COPY srcs/wp-config.php /var/www/localhost/wordpress/
 
 EXPOSE 80 443
 
-CMD bash /run.sh
+CMD sed -i "s/autoindex on/autoindex $AUTOINDEX/g" /etc/nginx/sites-available/localhost	&& \
+	bash /run.sh
 
